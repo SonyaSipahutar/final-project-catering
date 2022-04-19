@@ -34,4 +34,10 @@ RSpec.describe MenuItem, type: :model do
     expect(item.errors[:price]).to include("must be greater than or equal to 0.01")
   end
 
+  it "is invalid with length of name more than 150" do
+    item = FactoryBot.build(:menu_item, name: 'a'*151)
+    item.valid?
+    expect(item.errors[:name]).to include("is too long (maximum is 150 characters)")
+  end
+
 end
