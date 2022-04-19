@@ -80,3 +80,5 @@ group :development, :test do
   gem "faker"
   gem 'rails-controller-testing'
 end
+
+gem "ffi"
