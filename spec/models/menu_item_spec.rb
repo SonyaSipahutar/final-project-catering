@@ -28,4 +28,10 @@ RSpec.describe MenuItem, type: :model do
     expect(item2.errors[:name]).to include("has already been taken")
   end
 
+  it "is invalid with a price less than 0.01" do
+    item = FactoryBot.build(:menu_item, price: 0.001)
+    item.valid?
+    expect(item.errors[:price]).to include("must be greater than or equal to 0.01")
+  end
+
 end
