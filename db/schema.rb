@@ -18,12 +18,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_19_175616) do
   end
 
   create_table "item_categories", force: :cascade do |t|
-    t.integer "menuitem_id", null: false
+    t.integer "menu_item_id", null: false
     t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_item_categories_on_category_id"
-    t.index ["menuitem_id"], name: "index_item_categories_on_menuitem_id"
+    t.index ["menu_item_id"], name: "index_item_categories_on_menuitem_id"
   end
 
   create_table "menu_items", force: :cascade do |t|
@@ -35,5 +35,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_19_175616) do
   end
 
   add_foreign_key "item_categories", "categories"
-  add_foreign_key "item_categories", "menuitems"
+  add_foreign_key "item_categories", "menu_items"
 end
