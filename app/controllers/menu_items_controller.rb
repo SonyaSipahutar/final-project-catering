@@ -65,6 +65,6 @@ class MenuItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def menu_item_params
-      params.fetch(:menu_item, {})
+      params.require(:menu_item).permit(:name, :price, :description, :category_id)
     end
 end
