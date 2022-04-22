@@ -74,12 +74,12 @@ RSpec.describe MenuItemsController do
     context "with valid attributes" do
       it "saves the new menu_item in the database" do
         expect{
-          post :create, params: { menu_item: FactoryBot.attributes_for(:menu_item, category_id:7) }
+          post :create, params: { menu_item: FactoryBot.attributes_for(:menu_item, category_id: 1) }
         }.to change(MenuItem, :count).by(1)
       end
 
       it "redirects to menu_items#show" do
-        post :create, params: { menu_item: FactoryBot.attributes_for(:menu_item, category_id:7) }
+        post :create, params: { menu_item: FactoryBot.attributes_for(:menu_item, category_id: 1) }
         expect(response).to redirect_to(menu_item_path(assigns[:menu_item]))
       end
     end

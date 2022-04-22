@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :category do
-    category_name { "MyString" }
+    category_name { "Ayam" }
   end
   
   factory :invalid_category, parent: :category do

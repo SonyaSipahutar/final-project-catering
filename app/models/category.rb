@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
-  has_many :item_categories
+  has_many :menu_items
   validates :category_name, presence:true
 end
