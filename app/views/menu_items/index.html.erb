@@ -2,13 +2,31 @@
 
 <h1>Menu items</h1>
 
-<div id="menu_items">
-  <% @menu_items.each do |menu_item| %>
-    <%= render menu_item %>
-    <p>
-      <%= link_to "Show this menu item", menu_item %>
-    </p>
-  <% end %>
+  <div id="menu_items">
+    <table class="table" border=1>
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Description</th>
+          <th scope="col">Category</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @menu_items.each do |menu_item| %>
+        <tr>
+          <td><%=  menu_item.name %></td>
+          <td><%=  menu_item.price %></td>
+          <td><%=  menu_item.description %></td>
+          <td><%=  menu_item.category.category_name %></td>
+          <td><%= link_to "Show this item", menu_item %></td>
+        </tr>
+           <% end %>
+      </tbody>
+    </table>
+  </div>
+ 
 </div>
 
 <%= link_to "New menu item", new_menu_item_path %>

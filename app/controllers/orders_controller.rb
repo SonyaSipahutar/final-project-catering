@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @list_status = ["NEW", "PAID", "CANCELED"]
   end
 
   # GET /orders/1/edit

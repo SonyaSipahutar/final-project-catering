@@ -82,3 +82,6 @@ group :development, :test do
 end
 
 gem "ffi"
+gem 'bootstrap', '~> 4.5.2'
+gem 'jquery-rails'
+gem 'sass-rails'

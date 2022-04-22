@@ -18,12 +18,12 @@
 
   <div>
     <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
+    <%= form.select :status,  [['NEW', 'NEW'], ['PAID', 'PAID'], ['CANCELED', 'CANCELED']] %>
   </div>
 
   <div>
     <%= form.label :customer_id, style: "display: block" %>
-    <%= form.text_field :customer_id %>
+    <%= form.collection_select(:customer_id, Customer.all, :id, :email, { :prompt => 'Select a Customer', :selected => @order.customer_id }, { class: 'form-control' }) %>
   </div>
 
   <div>
