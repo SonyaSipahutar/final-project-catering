@@ -13,4 +13,10 @@ RSpec.describe Customer, type: :model do
     customer.valid?
     expect(customer.errors[:email]).to include("can't be blank")
   end
+
+  it "has invalid if email format was wrong" do
+    customer = FactoryBot.build(:customer, email: "halo@gmail")
+    customer.valid?
+    expect(customer.errors[:email]).to include("is invalid")
+  end
 end
