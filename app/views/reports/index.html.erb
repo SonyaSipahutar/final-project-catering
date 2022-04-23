@@ -1,0 +1,18 @@
+<div id="report">
+  <% @orders.each do |order| %>
+    <p>
+      <strong>Customer Email:</strong>
+      <%= order.customer.email %>
+    </p>
+    <p>
+      <strong>Total price:</strong>
+      <%= order.total_price %>
+    </p>
+  
+    <p>
+      <strong>Status:</strong>
+      <%= order.status %>
+    </p>
+
+  <% end %>
+</div>

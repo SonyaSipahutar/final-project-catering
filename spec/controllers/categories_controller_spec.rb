@@ -1,34 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe CategoriesController do
-  
-  describe 'GET #index' do
-    # context 'with params[:letter]' do
-    #   it "populates an array of categories starting with the letter" do
-    #     nasi_uduk = FactoryBot.create(:category, category_name: "Nasi Uduk")
-    #     kerak_telor = FactoryBot.create(:category, category_name: "Kelar Telor")
-    #     get :index, params: { letter: 'N' }
-    #     expect(assigns(:categories)).to match_array([nasi_uduk])
-    #   end
-    #   it "renders the :index template" do
-    #     get :index, params: { letter: 'N' }
-    #     expect(response).to render_template :index
-    #   end
-    # end
-  
-    # context 'without params[:letter]' do
-    #   it "populates an array of all categories" do
-    #     makanan = FactoryBot.create(:category, category_name: "Makanan")
-    #     minuman = FactoryBot.create(:category, category_name: "Minuman")
-    #     get :index
-    #     expect(assigns(:categories)).to match_array([makanan, minuman])
-    #   end
-    #   it "renders the :index template" do
-    #     get :index
-    #     expect(response).to render_template :index
-    #   end
-    # end
-  end  
 
   describe 'GET #show' do
     it "assigns the requested category to @category" do

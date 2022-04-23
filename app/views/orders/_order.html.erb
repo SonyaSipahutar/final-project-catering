@@ -13,5 +13,6 @@
     <strong>Customer Email:</strong>
     <%= order.customer.email %>
   </p>
-
+<%= link_to "New order detail", new_order_order_detail_path(order) %>
+<%= link_to "List order detail", order_order_details_url(order) %>
 </div>

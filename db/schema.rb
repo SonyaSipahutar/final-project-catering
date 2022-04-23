@@ -10,16 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_22_073907) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_23_030720) do
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "costumers", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,6 +34,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_22_073907) do
     t.index ["category_id"], name: "index_menu_items_on_category_id"
   end
 
+  create_table "order_details", force: :cascade do |t|
+    t.float "quantity"
+    t.float "price_per_item"
+    t.integer "order_id", null: false
+    t.integer "menu_item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_item_id"], name: "index_order_details_on_menu_item_id"
+    t.index ["order_id"], name: "index_order_details_on_order_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.float "total_price"
     t.string "status"
@@ -50,6 +54,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_22_073907) do
     t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
+  create_table "reports", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_reports_on_order_id"
+  end
+
   add_foreign_key "menu_items", "categories"
+  add_foreign_key "order_details", "menu_items"
+  add_foreign_key "order_details", "orders"
   add_foreign_key "orders", "customers"
+  add_foreign_key "reports", "orders"
 end

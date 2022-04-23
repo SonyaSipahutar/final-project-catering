@@ -8,12 +8,12 @@ class OrdersController < ApplicationController
 
   # GET /orders/1 or /orders/1.json
   def show
+    @order_detail = OrderDetail.new
   end
 
   # GET /orders/new
   def new
     @order = Order.new
-    @list_status = ["NEW", "PAID", "CANCELED"]
   end
 
   # GET /orders/1/edit

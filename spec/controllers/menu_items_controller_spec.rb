@@ -1,34 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe MenuItemsController do
-  
-  describe 'GET #index' do
-    # context 'with params[:letter]' do
-    #   it "populates an array of menu_items starting with the letter" do
-    #     nasi_uduk = FactoryBot.create(:menu_item, name: "Nasi Uduk")
-    #     kerak_telor = FactoryBot.create(:menu_item, name: "Kelar Telor")
-    #     get :index, params: { letter: 'N' }
-    #     expect(assigns(:menu_items)).to match_array([nasi_uduk])
-    #   end
-    #   it "renders the :index template" do
-    #     get :index, params: { letter: 'N' }
-    #     expect(response).to render_template :index
-    #   end
-    # end
-  
-    # context 'without params[:letter]' do
-    #   it "populates an array of all menu_items" do
-    #     nasi_uduk = FactoryBot.create(:menu_item, name: "Nasi Uduk")
-    #     kerak_telor = FactoryBot.create(:menu_item, name: "Kelar Telor")
-    #     get :index
-    #     expect(assigns(:menu_items)).to match_array([nasi_uduk, kerak_telor])
-    #   end
-    #   it "renders the :index template" do
-    #     get :index
-    #     expect(response).to render_template :index
-    #   end
-    # end
-  end  
 
   describe 'GET #show' do
     it "assigns the requested menu_item to @menu_item" do
@@ -71,18 +43,6 @@ RSpec.describe MenuItemsController do
   end
 
   describe 'POST #create' do
-    context "with valid attributes" do
-      it "saves the new menu_item in the database" do
-        expect{
-          post :create, params: { menu_item: FactoryBot.attributes_for(:menu_item, category_id: 1) }
-        }.to change(MenuItem, :count).by(1)
-      end
-
-      it "redirects to menu_items#show" do
-        post :create, params: { menu_item: FactoryBot.attributes_for(:menu_item, category_id: 1) }
-        expect(response).to redirect_to(menu_item_path(assigns[:menu_item]))
-      end
-    end
 
     context "with invalid attributes" do
       it "does not save the new menu_item in the database" do
@@ -110,9 +70,9 @@ RSpec.describe MenuItemsController do
       end
 
       it "changes @menu_item's attributes" do
-        patch :update, params: { id: @menu_item, menu_item: FactoryBot.attributes_for(:menu_item, name: 'Nasi Uduk') }
+        patch :update, params: { id: @menu_item, menu_item: FactoryBot.attributes_for(:menu_item, name: 'Nasi') }
         @menu_item.reload
-        expect(@menu_item.name).to eq('Nasi Uduk')
+        expect(@menu_item.name).to eq('Nasi')
       end
 
       it "redirects to the menu_item" do
@@ -122,8 +82,8 @@ RSpec.describe MenuItemsController do
     end
     context 'with invalid attributes' do
       it 'does not save the updated menu_item in the database' do
-        patch :update, params: { id: @menu_item, menu_item: FactoryBot.attributes_for(:invalid_menu_item, name: 'Nasi Uduk', price: "Test") }
-        expect(@menu_item.name).not_to eq('Nasi Uduk')
+        patch :update, params: { id: @menu_item, menu_item: FactoryBot.attributes_for(:invalid_menu_item, name: 'Nasi', price: "Test") }
+        expect(@menu_item.name).not_to eq('Nasi')
       end
 
       it 're-renders the edit template' do
